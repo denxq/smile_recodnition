@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="canv_container">
+            <canvas id="canvas" width="32" height="32" class="enabled"></canvas>
+            <p id="predict_text">0%</p>
+            <p id="predict_emoji" class="disabled_emoji"></p>
+
+            <a id="close_button" onclick="_close()">Close ❌</a>
+            
+        </div>
+        
+        
+        <div class="emoji_container">
+            <button onclick="download(1)" class="happy button">Download as happy smile 😀</button>
+            <button onclick="download(0)" class="sad button">Download as sad smile 😥</button>
+        </div>
+
+        <button class="train button" onclick="train()">Train 🥊</button>
+        
+        <div class="predict_container">
+            <button class="predict button" onclick="predict()">Predict 🔮</button>
+            <button onclick="clear_canvas()" class="clear button">Clear ↩️</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/canvas.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/buttons.js')}}"></script>
+    
+</body>
+</html>
